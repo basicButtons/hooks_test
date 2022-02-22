@@ -1,0 +1,6 @@
+{
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "editor.codeActionsOnSave": { // 每次保存的时候将代码按eslint格式进行修复
+        "source.fixAll.eslint": true
+      },
+}
