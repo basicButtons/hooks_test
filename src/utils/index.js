@@ -23,3 +23,12 @@ export const useDebounce = (value, delay) => {
   }, [value, delay]);
   return debouncedValue;
 };
+
+const isEmpty = (value) => value === 0 ? true : !value
+
+export const parseParams = (param)=>{
+  let newParams = {...param}
+  return Object.fromEntries(Object.entries(newParams).filter(([key,value])=> !isEmpty(value)))
+}
+
+

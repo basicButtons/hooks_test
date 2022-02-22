@@ -1,8 +1,7 @@
 import React from "react";
 
-
 const Table = (props)=>{
-    const {list} = props
+    const {list,users} = props
     return <table>
         <thead>
             <tr>
@@ -13,11 +12,11 @@ const Table = (props)=>{
         <tbody>
             {
                 list.map(project => <tr key={project.id}>
-                    <td>{project.id}</td>
                     <td>{project.name}</td>
+                    <td>{users.find(user => user.id === project.personId)?.name || "未发现"}</td>
                 </tr>)
             }
         </tbody>
     </table>
 }
-export default Table; 
+export default Table;
