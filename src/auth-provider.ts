@@ -7,21 +7,22 @@ export const handleUserResponse = ({ user }: { user: User }) => {
   return user;
 };
 export const login = (data: { username: string; password: string }) => {
-  fetch("http://localhost:3001/login", {
+  return fetch("http://localhost:3001/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }).then(async (response) => {
-    console.log(response);
+  }).then(async (response: Response) => {
     if (response.ok) {
       return handleUserResponse(await response.json());
+    } else {
+      return Promise.reject(data);
     }
   });
 };
 export const register = (data: { username: string; password: string }) => {
-  fetch("http://localhost:3001/register", {
+  return fetch("http://localhost:3001/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,6 +32,8 @@ export const register = (data: { username: string; password: string }) => {
     console.log(response);
     if (response.ok) {
       return handleUserResponse(await response.json());
+    } else {
+      return Promise.reject(data);
     }
   });
 };
