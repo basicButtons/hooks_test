@@ -29,7 +29,7 @@ const Test = () => {
     }, [debounceParams])
     return <div>
         <SearchPanel param={param} setParam={setParam} users={users}></SearchPanel>
-        <Table list={list} setList={setList} users={users}></Table>
+        <Table list={list} users={users}></Table>
     </div>
 }
 
