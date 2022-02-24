@@ -37,4 +37,8 @@ export const register = (data: { username: string; password: string }) => {
     }
   });
 };
-export const logout = () => window.localStorage.removeItem(localStoragekey);
+export const logout = () =>
+  new Promise((resolve, reject) => {
+    window.localStorage.removeItem(localStoragekey);
+    resolve("ok");
+  });
