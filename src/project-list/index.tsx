@@ -12,7 +12,6 @@ const Test = () => {
         personId: ""
     })
     const debounceParams = useDebounce(param,1000)
-    console.log(debounceParams)
     useEffect(() => {
         fetch("http://localhost:3000/user").then(async (response) => {
             if (response.ok) {

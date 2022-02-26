@@ -1,24 +1,15 @@
 import React, { FormEvent } from "react";
-
+import { useAuth } from "context/auth-context"
 const LoginScreen =()=>{
+    const {login , user} = useAuth();
     const handleSubmit = (event:FormEvent<HTMLFormElement>)=>{
         event.preventDefault()
         const username = (event.currentTarget.elements[0] as HTMLInputElement).value
         const password = (event.currentTarget.elements[1] as HTMLInputElement).value
-        fetch("http://localhost:3001/login",{
-            method:"POST",
-            headers:{
-                "Content-Type" : "application/json"
-            },
-            body:JSON.stringify({username,password})
-        }).then(async(response)=>{
-            console.log(response)
-            if(response.ok){
-                console.log("ok")
-            }
-        })
+        login({username,password})
     }
     return <form onSubmit={handleSubmit}>
+        {user? "登录成功用户名：" + user.name : ""}
         <div>
             <label htmlFor="username">用户名</label>
             <input type="text" id = {"username"}/>
